@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>David Bacon | Instructional Designer and E-Learning Developer</title>
+  <style>
+    :root {
+      --bg: #f7f8fa;
+      --surface: #ffffff;
+      --text: #1f2933;
+      --muted: #52606d;
+      --accent: #2b3e55;
+      --accent-hover: #1f3044;
+      --border: #d9e2ec;
+      --max-width: 1000px;
+      --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      width: min(92%, var(--max-width));
+      margin: 0 auto;
+    }
+
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+      gap: 1rem;
+    }
+
+    .site-name {
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      font-size: 0.95rem;
+    }
+
+    .hero {
+      padding: 5.5rem 0 4rem;
+    }
+
+    .hero-inner {
+      display: grid;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      margin-bottom: 0.75rem;
+    }
+
+    h1 {
+      font-size: clamp(2.3rem, 5vw, 4rem);
+      line-height: 1.1;
+      margin: 0 0 0.75rem;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      color: var(--muted);
+      margin: 0 0 1.25rem;
+      font-weight: 600;
+    }
+
+    .hero p {
+      max-width: 720px;
+      font-size: 1.06rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 0.85rem 1.2rem;
+      border-radius: 999px;
+      background: var(--accent);
+      color: white;
+      font-weight: 700;
+      border: 2px solid var(--accent);
+      transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .button:hover {
+      background: var(--accent-hover);
+      border-color: var(--accent-hover);
+      text-decoration: none;
+      transform: translateY(-1px);
+    }
+
+    .button.secondary {
+      background: transparent;
+      color: var(--accent);
+    }
+
+    section {
+      padding: 1.25rem 0 3.5rem;
+    }
+
+    .section-title {
+      font-size: 1.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 1.75rem;
+      box-shadow: var(--shadow);
+    }
+
+    .project-title {
+      font-size: 1.5rem;
+      margin: 0 0 0.25rem;
+    }
+
+    .project-meta {
+      color: var(--muted);
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .two-column {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin-top: 1.25rem;
+    }
+
+    .mini-card {
+      background: #fdfdfd;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1rem;
+    }
+
+    .mini-card h3 {
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+      font-size: 1.05rem;
+    }
+
+    .stack {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    footer {
+      padding: 2rem 0 3rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 750px) {
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .two-column {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="site-name">David Bacon</div>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#project">Project</a>
+        <a href="#approach">Approach</a>
+        <a href="#more-projects">More Projects</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <div>
+          <div class="eyebrow">Portfolio</div>
+          <h1>Instructional Designer and E-Learning Developer</h1>
+          <p class="subtitle">Scenario-based learning | Communication skills training | Performance-focused design</p>
+          <p>
+            I design practical learning experiences that help people navigate complex workplace situations with clarity and confidence. After 19 years as an educator leading large instructional programs, I’m now focused on scenario-based learning, communication skills training, and performance-focused e-learning design.
+          </p>
+          <div class="button-row">
+            <a class="button" href="#project">View Featured Project</a>
+            <a class="button secondary" href="#contact">Contact Me</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="project">
+      <div class="container">
+        <h2 class="section-title">Featured Project</h2>
+        <div class="card">
+          <h3 class="project-title">Navigating Difficult Conversations</h3>
+          <div class="project-meta">Scenario-based e-learning experience built in Articulate Storyline</div>
+          <p>
+            This interactive scenario helps learners practice managing a difficult workplace conversation where expectations, communication, and performance have become misaligned. Instead of presenting advice alone, the experience allows learners to make decisions, see consequences, and adjust their approach in a realistic setting.
+          </p>
+
+          <div class="two-column">
+            <div class="mini-card">
+              <h3>This project focuses on</h3>
+              <p>Clarifying expectations during performance conversations, maintaining trust while addressing problems directly, recognizing how tone and assumptions shape outcomes, and choosing responses that move conversations forward productively.</p>
+            </div>
+            <div class="mini-card">
+              <h3>My role included</h3>
+              <p>Scenario design, dialogue writing, branching structure development, learner decision mapping, feedback design, and creation of supporting reference materials.</p>
+            </div>
+          </div>
+
+          <div class="button-row" style="margin-top: 1.25rem;">
+            <a class="button" href="#">Launch Project</a>
+            <a class="button secondary" href="#approach">View Design Approach</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="approach">
+      <div class="container">
+        <h2 class="section-title">Why This Experience Was Designed This Way</h2>
+        <div class="card stack">
+          <p>
+            Difficult conversations often break down not because people lack good intentions, but because expectations are unclear and communication happens too late. I designed this scenario to let learners explore how small choices in tone, timing, and framing can change the direction of a conversation.
+          </p>
+          <p>
+            Rather than presenting a single correct path, the experience includes multiple realistic responses with different outcomes. Learners can recover from missteps, see how defensiveness develops, and practice strategies that rebuild alignment.
+          </p>
+          <p>
+            The goal was to create something that feels less like a quiz and more like a conversation they might actually have at work.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="more-projects">
+      <div class="container">
+        <h2 class="section-title">Additional Projects</h2>
+        <div class="two-column">
+          <div class="card">
+            <h3 class="project-title">Delivering Better Feedback</h3>
+            <p>
+              A short Rise-based learning experience exploring the difference between advice, criticism, and actionable feedback, with practical strategies learners can apply immediately.
+            </p>
+            <p><strong>In development.</strong></p>
+          </div>
+          <div class="card">
+            <h3 class="project-title">Quick Reference Guide: Difficult Conversations</h3>
+            <p>
+              A companion performance support resource designed to help learners prepare for real conversations after completing the scenario experience.
+            </p>
+            <p><strong>Included with featured project.</strong></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <h2 class="section-title">About Me</h2>
+        <div class="card">
+          <p>
+            I spent 19 years designing and leading learning experiences in public education, working with large groups of learners while building programs that balanced structure, feedback, and individual growth. That experience shaped how I approach instructional design today: learning should be practical, realistic, and immediately usable.
+          </p>
+          <p>
+            I’m especially interested in scenario-based learning, communication skills training, and performance support resources that help people handle challenging workplace situations more effectively.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <h2 class="section-title">Contact</h2>
+        <div class="card">
+          <p>If you'd like to learn more about my work or connect, I’d be glad to hear from you.</p>
+          <div class="contact-list">
+            <div><strong>Email:</strong> <a href="mailto:yourname@email.com">yourname@email.com</a></div>
+            <div><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/yourprofile">linkedin.com/in/yourprofile</a></div>
+            <div><strong>GitHub:</strong> <a href="https://github.com/yourusername">github.com/yourusername</a></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2026 David Bacon. Built with HTML and CSS on GitHub Pages.
+    </div>
+  </footer>
+</body>
+</html>
