@@ -81,8 +81,18 @@
 
     .hero-inner {
       display: grid;
+      grid-template-columns: 160px 1fr;
       gap: 2rem;
       align-items: center;
+    }
+
+    .hero-headshot {
+      width: 160px;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid var(--border);
+      box-shadow: var(--shadow);
     }
 
     .eyebrow {
@@ -240,12 +250,13 @@
   <main>
     <section class="hero">
       <div class="container hero-inner">
+        <img src="headshot.jpg" alt="Headshot of David Bacon" class="hero-headshot" />
         <div>
           <div class="eyebrow">Portfolio</div>
           <h1>Instructional Designer and E-Learning Developer</h1>
           <p class="subtitle">Learning and Development | Educator | Learning Experience Designer | Leadership & Professional Development</p>
           <p>
-           I am an experienced educator with a passion for designing meaningful learning experiences that help individuals and teams grow. Over 19 years, I have developed multi-year curriculum programs, led professional development initiatives, and coached both students and colleagues to achieve measurable outcomes.
+          I am an experienced educator with a passion for designing meaningful learning experiences that help individuals and teams grow. Over 19 years, I have developed multi-year curriculum programs, led professional development initiatives, and coached both students and colleagues to achieve measurable outcomes.
 
 My expertise spans instructional design, technology-enhanced learning, and leadership development — skills that are equally valuable in education and corporate learning environments. I am particularly interested in creating programs that foster skill growth, collaboration, and continuous improvement.
 
