@@ -1,366 +1,395 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>David Bacon | Instructional Designer and E-Learning Developer</title>
-  <style>
-    :root {
-      --bg: #f7f8fa;
-      --surface: #ffffff;
-      --text: #1f2933;
-      --muted: #52606d;
-      --accent: #2b3e55;
-      --accent-hover: #1f3044;
-      --border: #d9e2ec;
-      --max-width: 1000px;
-      --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>David Bacon | Instructional Designer and E-Learning Developer</title>
+<style>
+:root {
+  --bg: #f7f8fa;
+  --surface: #ffffff;
+  --text: #1f2933;
+  --muted: #52606d;
+  --accent: #2b3e55;
+  --accent-hover: #1f3044;
+  --accent-soft: #eef2f6;
+  --border: #d9e2ec;
+  --max-width: 1000px;
+  --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+  --shadow-lg: 0 18px 44px rgba(15, 23, 42, 0.14);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.container { width: min(92%, var(--max-width)); margin: 0 auto; }
+header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  gap: 1rem;
+}
+.site-name { font-weight: 700; letter-spacing: 0.02em; }
+.nav-links { display: flex; gap: 1rem; flex-wrap: wrap; font-size: 0.95rem; }
+.hero { padding: 5.5rem 0 4rem; }
+.hero-inner {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+.hero-headshot {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid var(--border);
+  box-shadow: var(--shadow);
+}
+.eyebrow {
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  margin-bottom: 0.75rem;
+}
+h1 { font-size: clamp(2.3rem, 5vw, 4rem); line-height: 1.1; margin: 0 0 0.75rem; }
+.subtitle { font-size: 1.2rem; color: var(--muted); margin: 0 0 1.25rem; font-weight: 600; }
+.hero p { max-width: 720px; font-size: 1.06rem; margin-bottom: 1.5rem; }
 
-    * {
-      box-sizing: border-box;
-    }
+/* --- CHANGE 1: hero copy tightened into a lead line + supporting line, so it
+   doesn't compete as hard with the buttons below it --- */
+.hero-lead { font-weight: 600; color: var(--text); }
+.hero-support { color: var(--muted); }
 
-    html {
-      scroll-behavior: smooth;
-    }
+.button-row { display: flex; flex-wrap: wrap; gap: 0.85rem; align-items: center; }
 
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
+/* --- CHANGE 2: primary vs secondary vs tertiary button weight in the hero.
+   "View Featured Project" is now visibly the main action; the other two
+   step down in visual weight instead of matching it 1:1. --- */
+.button {
+  display: inline-block;
+  padding: 0.85rem 1.2rem;
+  border-radius: 999px;
+  font-weight: 700;
+  border: 2px solid var(--accent);
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+.button.primary {
+  background: var(--accent);
+  color: white;
+  padding: 1rem 1.6rem;
+  font-size: 1.05rem;
+  box-shadow: var(--shadow);
+}
+.button.primary:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+  text-decoration: none;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-lg);
+}
+.button.secondary {
+  background: transparent;
+  color: var(--accent);
+}
+.button.secondary:hover { background: var(--accent-soft); text-decoration: none; }
+.button.tertiary {
+  background: transparent;
+  color: var(--muted);
+  border-color: transparent;
+  padding: 0.85rem 0.4rem;
+  font-weight: 600;
+}
+.button.tertiary:hover { color: var(--accent); text-decoration: underline; }
 
-    a {
-      color: var(--accent);
-      text-decoration: none;
-    }
+section { padding: 1.25rem 0 3.5rem; }
+.section-title { font-size: 1.9rem; margin-bottom: 1rem; }
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 1.75rem;
+  box-shadow: var(--shadow);
+}
 
-    a:hover {
-      text-decoration: underline;
-    }
+/* --- CHANGE 3: the Featured Project card gets its own visual identity —
+   accent border, tinted backdrop, a "Featured" tag, and a bigger title —
+   so it visibly outranks the Additional Projects cards below it. --- */
+.card.featured {
+  border: 1px solid var(--accent);
+  background: linear-gradient(180deg, var(--accent-soft) 0%, var(--surface) 220px);
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  padding: 2.25rem;
+}
+.featured-tag {
+  display: inline-block;
+  background: var(--accent);
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  margin-bottom: 0.9rem;
+}
+.card.featured .project-title { font-size: 1.85rem; }
 
-    .container {
-      width: min(92%, var(--max-width));
-      margin: 0 auto;
-    }
+.project-title { font-size: 1.5rem; margin: 0 0 0.25rem; }
+.project-meta { color: var(--muted); margin-bottom: 1rem; font-weight: 600; }
+.two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 1.25rem; }
+.mini-card {
+  background: #fdfdfd;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1rem;
+}
+.mini-card h3 { margin-top: 0; margin-bottom: 0.5rem; font-size: 1.05rem; }
 
-    header {
-      background: var(--surface);
-      border-bottom: 1px solid var(--border);
-      position: sticky;
-      top: 0;
-      z-index: 20;
-    }
+/* --- CHANGE 4: Additional-project cards now share the featured card's
+   vocabulary (a project-meta line) and lay out as flex columns so their
+   action rows and supporting materials align across both cards. --- */
+.project-card { display: flex; flex-direction: column; }
+.project-card .project-desc { flex: 1 1 auto; }
+.project-card .button-row { margin-top: 1.25rem; }
 
-    .nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 0;
-      gap: 1rem;
-    }
-
-    .site-name {
-      font-weight: 700;
-      letter-spacing: 0.02em;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      font-size: 0.95rem;
-    }
-
-    .hero {
-      padding: 5.5rem 0 4rem;
-    }
-
-    .hero-inner {
-      display: grid;
-      grid-template-columns: 160px 1fr;
-      gap: 2rem;
-      align-items: center;
-    }
-
-    .hero-headshot {
-      width: 160px;
-      height: 160px;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 3px solid var(--border);
-      box-shadow: var(--shadow);
-    }
-
-    .eyebrow {
-      color: var(--accent);
-      font-weight: 700;
-      letter-spacing: 0.03em;
-      text-transform: uppercase;
-      font-size: 0.85rem;
-      margin-bottom: 0.75rem;
-    }
-
-    h1 {
-      font-size: clamp(2.3rem, 5vw, 4rem);
-      line-height: 1.1;
-      margin: 0 0 0.75rem;
-    }
-
-    .subtitle {
-      font-size: 1.2rem;
-      color: var(--muted);
-      margin: 0 0 1.25rem;
-      font-weight: 600;
-    }
-
-    .hero p {
-      max-width: 720px;
-      font-size: 1.06rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .button-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.85rem;
-    }
-
-    .button {
-      display: inline-block;
-      padding: 0.85rem 1.2rem;
-      border-radius: 999px;
-      background: var(--accent);
-      color: white;
-      font-weight: 700;
-      border: 2px solid var(--accent);
-      transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
-    }
-
-    .button:hover {
-      background: var(--accent-hover);
-      border-color: var(--accent-hover);
-      text-decoration: none;
-      transform: translateY(-1px);
-    }
-
-    .button.secondary {
-      background: transparent;
-      color: var(--accent);
-    }
-
-    section {
-      padding: 1.25rem 0 3.5rem;
-    }
-
-    .section-title {
-      font-size: 1.9rem;
-      margin-bottom: 1rem;
-    }
-
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 1.75rem;
-      box-shadow: var(--shadow);
-    }
-
-    .project-title {
-      font-size: 1.5rem;
-      margin: 0 0 0.25rem;
-    }
-
-    .project-meta {
-      color: var(--muted);
-      margin-bottom: 1rem;
-      font-weight: 600;
-    }
-
-    .two-column {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.25rem;
-      margin-top: 1.25rem;
-    }
-
-    .mini-card {
-      background: #fdfdfd;
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 1rem;
-    }
-
-    .mini-card h3 {
-      margin-top: 0;
-      margin-bottom: 0.5rem;
-      font-size: 1.05rem;
-    }
-
-    .stack {
-      display: grid;
-      gap: 1rem;
-    }
-
-    .contact-list {
-      display: grid;
-      gap: 0.5rem;
-      margin-top: 1rem;
-    }
-
-    footer {
-      padding: 2rem 0 3rem;
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    @media (max-width: 750px) {
-      .nav {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
-      .two-column {
-        grid-template-columns: 1fr;
-      }
-
-      .hero {
-        padding-top: 4rem;
-      }
-    }
-  </style>
+/* --- CHANGE 5: supporting PDFs are promoted from afterthought text links
+   into labeled "Project artifacts" — each one states what it is and that
+   it's a downloadable document, so the depth behind the project is obvious. --- */
+.resource-group {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+}
+.resource-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.75rem;
+}
+.resource-list { display: grid; gap: 0.6rem; }
+.resource {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.7rem 0.85rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #fdfdfd;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+.resource:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow);
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+.resource-icon {
+  flex: none;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+.resource-text { display: grid; gap: 0.1rem; line-height: 1.3; }
+.resource-name { font-weight: 700; color: var(--text); }
+.resource-desc { font-size: 0.85rem; color: var(--muted); }
+.resource-type {
+  flex: none;
+  margin-left: auto;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  background: var(--accent-soft);
+  border: 1px solid var(--border);
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+}
+.stack { display: grid; gap: 1rem; }
+.contact-list { display: grid; gap: 0.5rem; margin-top: 1rem; }
+footer { padding: 2rem 0 3rem; color: var(--muted); font-size: 0.95rem; }
+@media (max-width: 750px) {
+  .nav { align-items: flex-start; flex-direction: column; }
+  .two-column { grid-template-columns: 1fr; }
+  .hero { padding-top: 4rem; }
+}
+</style>
 </head>
 <body>
-  <header>
-    <div class="container nav">
-      <div class="site-name">David Bacon</div>
-      <nav class="nav-links" aria-label="Main navigation">
-        <a href="#project">Project</a>
-        <a href="about-flagship.html">Approach</a>
-        <a href="#more-projects">More Projects</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-      </nav>
+<header>
+  <div class="container nav">
+    <div class="site-name">David Bacon</div>
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="#project">Project</a>
+      <a href="about-flagship.html">Approach</a>
+      <a href="#more-projects">More Projects</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="container hero-inner">
+    <img src="Bacon-2~3.jpg" alt="Headshot of David Bacon" class="hero-headshot" />
+    <div>
+      <div class="eyebrow">Portfolio</div>
+      <h1>Instructional Designer and E-Learning Developer</h1>
+      <p class="subtitle">Instructional Design | Leadership Development | Learning Experience Designer | Scenario-Based Learning</p>
+      <p>
+        <span class="hero-lead">Nineteen years of diagnosing why people aren't performing, and building the training that fixes it.</span>
+        <span class="hero-support"> I've directed multi-year development programs serving 150+ participants annually across four concurrent learner cohorts, earning Excellent performance ratings in 11 consecutive review cycles &mdash; by treating learning design as a performance problem first and a content problem second. I'm now bringing that background into corporate Instructional Design, Talent Development, and Leadership Development roles where the results need to be measurable.</span>
+      </p>
+      <div class="button-row">
+        <a class="button primary" href="#project">View Featured Project</a>
+        <a class="button secondary" href="DAVID_BACON_RESUME.pdf">View Resume</a>
+        <a class="button tertiary" href="mailto:bacon.davidj@gmail.com">Contact Me →</a>
+      </div>
     </div>
-  </header>
+  </div>
+</section>
 
-  <main>
-    <section class="hero">
-      <div class="container hero-inner">
-        <img src="Bacon-2~3.jpg" alt="Headshot of David Bacon" class="hero-headshot" />
-        <div>
-          <div class="eyebrow">Portfolio</div>
-          <h1>Instructional Designer and E-Learning Developer</h1>
-          <p class="subtitle">Instructional Design | Leadership Development | Learning Experience Designer | Scenario-Based Learning | Educator | </p>
-          <p>Nineteen years of diagnosing why people aren't performing and building the training that fixes it. I've directed multi-year
-development programs serving 150+ participants annually across four concurrent learner cohorts, earning Excellent
-performance ratings in 11 consecutive review cycles. That consistency isn't luck. It comes from treating learning design
-as a performance problem first and a content problem second. I specialize in translating messy, real-world
-performance gaps into structured learning experiences that actually change behavior. My work spans curriculum
-development, scenario-based eLearning, blended program design, leadership development, and assessment. I bring
-the same analytical discipline to evaluating impact as I do to designing instruction. I'm now bringing this background
-into corporate Instructional Design, Talent Development, and Leadership Development roles where the stakes are high
-and the results need to be measurable. If you're building learning programs that need to move the needle on
-performance, I'd welcome a conversation.
-          </p>
-          <div class="button-row">
-            <a class="button" href="#project">View Featured Project</a>
-            <a class="button" href="DAVID_BACON_RESUME.pdf">View Resume</a>
-            <a class="button secondary" href="mailto:bacon.davidj@gmail.com">Contact Me</a>
-          </div>
+<section id="project">
+  <div class="container">
+    <h2 class="section-title">Featured Project</h2>
+    <div class="card featured">
+      <div class="featured-tag">★ Featured</div>
+      <h3 class="project-title">Scenario-based simulation for internal tech support</h3>
+      <div class="project-meta">An AI-Driven Simulation in Articulate Storyline</div>
+      <p>
+        This interactive scenario is an AI-powered scenario-based simulation where learners interact with a frustrated internal stakeholder, investigate a CRM workflow issue, and choose an appropriate next step. Learners practice de-escalation, active listening, and root-cause questioning while receiving an immediate score and targeted feedback based on the quality of their response.
+      </p>
+      <div class="two-column">
+        <div class="mini-card">
+          <h3>This project focuses on</h3>
+          <p>Building practical communication and diagnostic skills through an AI-powered workplace simulation. Learners practice de-escalating a frustrated stakeholder, asking targeted questions, identifying the root cause of a CRM workflow issue, and deciding whether to troubleshoot, clarify the process, or escalate the concern.</p>
+        </div>
+        <div class="mini-card">
+          <h3>My role included</h3>
+          <p>Designing the scenario structure, writing the AI character prompts, developing realistic learner goals, and creating feedback criteria to evaluate learner responses. I built the interaction around authentic workplace communication skills, including de-escalation, active listening, root-cause questioning, and selecting an appropriate support or escalation path.</p>
         </div>
       </div>
-    </section>
-
-    <section id="project">
-      <div class="container">
-        <h2 class="section-title">Featured Project</h2>
-        <div class="card">
-          <h3 class="project-title">Scenario-based simulation for internal tech support</h3>
-          <div class="project-meta">An AI-Driven Simulation in Articulate Storyline</div>
-          <p>
-            This interactive scenario is an AI-powered scenario-based simulation where learners interact with a frustrated internal stakeholder, investigate a CRM workflow issue, and choose an appropriate next step. Learners practice de-escalation, active listening, and root-cause questioning while receiving an immediate score and targeted feedback based on the quality of their response.
-          </p>
-
-          <div class="two-column">
-            <div class="mini-card">
-              <h3>This project focuses on</h3>
-              <p>Building practical communication and diagnostic skills through an AI-powered workplace simulation. Learners practice de-escalating a frustrated stakeholder, asking targeted questions, identifying the root cause of a CRM workflow issue, and deciding whether to troubleshoot, clarify the process, or escalate the concern.</p>
-            </div>
-            <div class="mini-card">
-              <h3>My role included</h3>
-              <p>Designing the scenario structure, writing the AI character prompts, developing realistic learner goals, and creating feedback criteria to evaluate learner responses. I built the interaction around authentic workplace communication skills, including de-escalation, active listening, root-cause questioning, and selecting an appropriate support or escalation path.</p>
-            </div>
-          </div>
-
-          <div class="button-row" style="margin-top: 1.25rem;">
-            <a class="button" href="projects/IT/story.html">Launch Project</a>
-            <a class="button secondary" href="it-sim.html">View Design Approach</a>
-                       </div>
-        </div>
+      <div class="button-row" style="margin-top: 1.25rem;">
+        <a class="button primary" href="projects/IT/story.html">Launch Project</a>
+        <a class="button secondary" href="it-sim.html">View Design Approach</a>
       </div>
-    </section>
-    <section id="more-projects">
-      <div class="container">
-        <h2 class="section-title">Additional Projects</h2>
-        <div class="two-column">
-          <div class="card">
-            <h3 class="project-title">Difficult Conversations</h3>
-            <p>
-              An interactive branching scenario built in Articulate Storyline that helps new managers practice difficult workplace conversations. Learners guide Jordan, a manager, through a performance conversation with Alex, choosing responses that lead to success, soft failure, or escalation. The project focuses on feedback delivery, expectation-setting, tone, and supporting behavior change through realistic decision-making.
-            </p>
-            <p> <a class="button" href="projects/difficult-conversations/story.html">Launch Project</a>
-            <a class="button secondary" href="about-flagship.html">View Design Approach</a>
-             <p><strong><a href="dcneedsanalysis.pdf">Needs Assessment</a></p>
-            <p><strong><a href="quick-ref1.pdf">Quick Reference Guide: Difficult Conversations</a></strong></p>
-          </div>
-          <div class="card">
-            <h3 class="project-title">Delivering Better Feedback</h3>
-            <p>
-              A short Rise-based learning experience exploring the difference between advice, criticism, and actionable feedback, with practical strategies learners can apply immediately.
-            </p>
-             <p> <a class="button" href="projects/rise360/index.html">Launch Project</a>
-            </div>
-         <div>
-        </div>
-      </div>
-    </section>
-
-    <section id="about">
-      <div class="container">
-        <h2 class="section-title">About Me</h2>
-        <div class="card">
-          <p>
-I spent 19 years designing and leading learning experiences in public education, building repeatable systems that helped learners develop skills, respond to feedback, and improve performance over time. That work shaped my approach to instructional design: learning should be practical, realistic, and built around what people actually need to do.          </p>
-          <p>
-My current portfolio focuses on scenario-based learning, leadership development, AI-supported simulations, and performance support resources. I’m especially interested in designing scalable learning systems that help employees communicate clearly, adopt new processes and tools, and navigate challenging workplace situations with confidence.          </p>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact">
-      <div class="container">
-        <h2 class="section-title">Contact</h2>
-        <div class="card">
-          <p>If you'd like to learn more about my work or connect, I’d be glad to hear from you.</p>
-          <div class="contact-list">
-            <div><strong>Email:</strong> <a href="mailto:bacon.davidj@gmailcom">bacon.davidj@gmail.com</a></div>
-            <div><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/davidjbaconld">www.linkedin.com/in/davidjbaconld</a></div>
-                      </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container">
-      © 2026 David Bacon. Built with HTML and CSS on GitHub Pages.
     </div>
-  </footer>
-  <script data-goatcounter="https://baconld.goatcounter.com/count"
-        async src="//gc.zgo.at/count.js"></script>
+  </div>
+</section>
+
+<section id="more-projects">
+  <div class="container">
+    <h2 class="section-title">Additional Projects</h2>
+    <div class="two-column">
+      <div class="card project-card">
+        <h3 class="project-title">Difficult Conversations</h3>
+        <div class="project-meta">A Branching Scenario in Articulate Storyline</div>
+        <p class="project-desc">
+          An interactive branching scenario that helps new managers practice difficult workplace conversations. Learners guide Jordan, a manager, through a performance conversation with Alex, choosing responses that lead to success, soft failure, or escalation. The project focuses on feedback delivery, expectation-setting, tone, and supporting behavior change through realistic decision-making.
+        </p>
+        <div class="button-row">
+          <a class="button secondary" href="projects/difficult-conversations/story.html">Launch Project</a>
+          <a class="button tertiary" href="about-flagship.html">View Design Approach →</a>
+        </div>
+        <div class="resource-group">
+          <div class="resource-label">Project artifacts</div>
+          <div class="resource-list">
+            <a class="resource" href="dcneedsanalysis.pdf">
+              <span class="resource-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/></svg>
+              </span>
+              <span class="resource-text">
+                <span class="resource-name">Needs Assessment</span>
+                <span class="resource-desc">The performance-gap analysis that justified the project</span>
+              </span>
+              <span class="resource-type">PDF</span>
+            </a>
+            <a class="resource" href="quick-ref1.pdf">
+              <span class="resource-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/></svg>
+              </span>
+              <span class="resource-text">
+                <span class="resource-name">Quick Reference Guide</span>
+                <span class="resource-desc">The on-the-job aid learners keep after the course</span>
+              </span>
+              <span class="resource-type">PDF</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="card project-card">
+        <h3 class="project-title">Delivering Better Feedback</h3>
+        <div class="project-meta">A Microcourse in Rise 360</div>
+        <p class="project-desc">
+          A short Rise-based learning experience exploring the difference between advice, criticism, and actionable feedback, with practical strategies learners can apply immediately.
+        </p>
+        <div class="button-row">
+          <a class="button secondary" href="projects/rise360/index.html">Launch Project</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container">
+    <h2 class="section-title">About Me</h2>
+    <div class="card">
+      <p>
+        I spent 19 years designing and leading learning experiences in public education, building repeatable systems that helped learners develop skills, respond to feedback, and improve performance over time. That work shaped my approach to instructional design: learning should be practical, realistic, and built around what people actually need to do.
+      </p>
+      <p>
+        My current portfolio focuses on scenario-based learning, leadership development, AI-supported simulations, and performance support resources. I'm especially interested in designing scalable learning systems that help employees communicate clearly, adopt new processes and tools, and navigate challenging workplace situations with confidence.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <h2 class="section-title">Contact</h2>
+    <div class="card">
+      <p>If you'd like to learn more about my work or connect, I'd be glad to hear from you.</p>
+      <div class="contact-list">
+        <div><strong>Email:</strong> <a href="mailto:bacon.davidj@gmail.com">bacon.davidj@gmail.com</a></div>
+        <div><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/davidjbaconld">www.linkedin.com/in/davidjbaconld</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container">
+    © 2026 David Bacon. Built with HTML and CSS on GitHub Pages.
+  </div>
+</footer>
+
+<script data-goatcounter="https://baconld.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
