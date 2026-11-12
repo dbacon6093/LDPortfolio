@@ -4,155 +4,137 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>David Bacon | Instructional Designer and E-Learning Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700&family=Literata:opsz,wght@7..72,600;7..72,700&display=swap" rel="stylesheet" />
 <style>
 :root {
-  --bg: #f7f8fa;
+  --bg: #f2f5f4;
   --surface: #ffffff;
-  --text: #1f2933;
-  --muted: #52606d;
-  --accent: #2b3e55;
-  --accent-hover: #1f3044;
-  --accent-soft: #eef2f6;
-  --border: #d9e2ec;
-  --max-width: 1000px;
-  --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
-  --shadow-lg: 0 18px 44px rgba(15, 23, 42, 0.14);
+  --text: #14232b;
+  --muted: #4d5f66;
+  --accent: #14555c;
+  --accent-hover: #0d3f45;
+  --accent-soft: #e4eeec;
+  --brass: #a8782a;
+  --brass-light: #e3bd72;
+  --deep: #0f3d43;
+  --border: #d3dcda;
+  --max-width: 1080px;
+  --display: "Literata", Georgia, "Times New Roman", serif;
+  --body: "Figtree", "Segoe UI", Arial, Helvetica, sans-serif;
 }
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+html { scroll-behavior: smooth; scroll-padding-top: 84px; }
 body {
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--body);
+  font-size: 1.0625rem;
   background: var(--bg);
   color: var(--text);
   line-height: 1.6;
 }
 a { color: var(--accent); text-decoration: none; }
 a:hover { text-decoration: underline; }
+:focus-visible { outline: 3px solid var(--brass); outline-offset: 3px; }
 .container { width: min(92%, var(--max-width)); margin: 0 auto; }
+h1, h2, h3 { font-family: var(--display); font-weight: 600; letter-spacing: -0.01em; }
 
 /* Header */
 header {
-  background: var(--surface);
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--border);
   position: sticky;
   top: 0;
   z-index: 20;
 }
-.nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 0;
-  gap: 1rem;
-}
-.site-name { font-weight: 700; letter-spacing: 0.02em; }
-.nav-links { display: flex; gap: 1rem; flex-wrap: wrap; font-size: 0.95rem; }
+.nav { display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 0; gap: 1rem; }
+.site-name { font-family: var(--display); font-weight: 700; font-size: 1.15rem; }
+.nav-links { display: flex; gap: 1.4rem; flex-wrap: wrap; font-size: 0.95rem; font-weight: 600; }
+.nav-links a { color: var(--text); }
+.nav-links a:hover { color: var(--accent); }
 
 /* Hero */
-.hero { padding: 5.5rem 0 4rem; }
-.hero-inner {
-  display: grid;
-  grid-template-columns: 160px 1fr;
-  gap: 2rem;
-  align-items: center;
-}
+.hero { padding: 4.5rem 0 4rem; }
+.hero-inner { display: grid; grid-template-columns: 1fr 220px; gap: 3rem; align-items: start; }
 .hero-headshot {
-  width: 160px;
-  height: 160px;
+  width: 220px;
+  height: 260px;
   object-fit: cover;
-  border-radius: 50%;
-  border: 3px solid var(--border);
-  box-shadow: var(--shadow);
+  border-radius: 110px 110px 14px 14px;
+  box-shadow: 10px 10px 0 var(--brass-light);
 }
-.eyebrow {
-  color: var(--accent);
-  font-weight: 700;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-  font-size: 0.85rem;
-  margin-bottom: 0.75rem;
-}
-h1 { font-size: clamp(2.3rem, 5vw, 4rem); line-height: 1.1; margin: 0 0 0.75rem; }
-.subtitle { font-size: 1.2rem; color: var(--muted); margin: 0 0 1.25rem; font-weight: 600; }
-.hero p { max-width: 720px; font-size: 1.06rem; margin-bottom: 1.5rem; }
-.hero .subtitle { font-size: 1.2rem; }
-.hero-lead { font-weight: 600; color: var(--text); }
+.eyebrow { color: var(--brass); font-weight: 700; font-size: 0.95rem; margin-bottom: 0.6rem; }
+h1 { font-size: clamp(2.2rem, 4.6vw, 3.5rem); line-height: 1.08; margin: 0 0 1.4rem; max-width: 22ch; text-wrap: balance; }
+.nowrap { white-space: nowrap; }
+.subtitle { font-size: 1.02rem; color: var(--accent); margin: 0 0 1.5rem; font-weight: 600; }
+.hero p { max-width: 68ch; margin-top: 0; margin-bottom: 1.6rem; }
+.hero-lead { font-weight: 700; color: var(--text); }
 .hero-support { color: var(--muted); }
+.hero-heading { font-family: var(--body); font-size: 1.05rem; font-weight: 700; letter-spacing: 0; margin: 0 0 0.6rem; }
+.highlights { max-width: 68ch; margin: 0 0 1.4rem; padding-left: 1.2rem; }
+.highlights li { margin-bottom: 0.4rem; padding-left: 0.2rem; }
+.highlights li::marker { color: var(--brass); }
+.hero p.hero-skills { color: var(--muted); font-size: 0.98rem; margin-bottom: 1rem; }
+.hero a { text-decoration: underline; text-underline-offset: 3px; }
+.hero a.button { text-decoration: none; }
+.hero a.button.tertiary { text-decoration: underline; }
 
 /* Buttons */
-.button-row { display: flex; flex-wrap: wrap; gap: 0.85rem; align-items: center; }
+.button-row { display: flex; flex-wrap: wrap; gap: 0.75rem 1rem; align-items: center; }
 .button {
   display: inline-block;
-  padding: 0.85rem 1.2rem;
-  border-radius: 999px;
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
   font-weight: 700;
   border: 2px solid var(--accent);
-  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
 }
-.button.primary {
-  background: var(--accent);
-  color: white;
-  padding: 1rem 1.6rem;
-  font-size: 1.05rem;
-  box-shadow: var(--shadow);
-}
-.button.primary:hover {
-  background: var(--accent-hover);
-  border-color: var(--accent-hover);
-  text-decoration: none;
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-lg);
-}
+.button:hover { text-decoration: none; }
+.button.primary { background: var(--accent); color: #fff; }
+.button.primary:hover { background: var(--accent-hover); border-color: var(--accent-hover); }
 .button.secondary { background: transparent; color: var(--accent); }
-.button.secondary:hover { background: var(--accent-soft); text-decoration: none; }
+.button.secondary:hover { background: var(--accent-soft); }
 .button.tertiary {
   background: transparent;
-  color: var(--muted);
+  color: var(--accent);
   border-color: transparent;
-  padding: 0.85rem 0.4rem;
-  font-weight: 600;
+  padding: 0.75rem 0.25rem;
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
-.button.tertiary:hover { color: var(--accent); text-decoration: underline; }
+.button.tertiary:hover { color: var(--accent-hover); }
 
-/* Sections and cards */
-section { padding: 1.25rem 0 3.5rem; }
-.section-title { font-size: 1.9rem; margin-bottom: 1rem; }
+/* Sections */
+.section { padding: 4rem 0; }
+.section-title { font-size: 1.9rem; margin: 0 0 1.5rem; }
+.project-title { font-size: 1.45rem; line-height: 1.2; margin: 0 0 0.3rem; }
+.project-meta { color: var(--muted); margin-bottom: 1rem; font-weight: 600; font-size: 0.98rem; }
+.project-desc { margin-top: 0; }
 .card {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 18px;
+  border-radius: 14px;
   padding: 1.75rem;
-  box-shadow: var(--shadow);
 }
-.project-title { font-size: 1.5rem; margin: 0 0 0.25rem; }
-.project-meta { color: var(--muted); margin-bottom: 1rem; font-weight: 600; }
 .project-card { display: flex; flex-direction: column; }
-.project-card .project-desc { flex: 1 1 auto; margin-top: 0; }
-.project-card .button-row { margin-top: 1.25rem; }
-.stack { display: grid; gap: 1.25rem; }
-.two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+.project-card .project-desc { flex: 1 1 auto; }
+.project-card .button-row { margin-top: 0.5rem; }
+.stack { display: grid; gap: 1.5rem; }
+.two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
 
 /* Thumbnail: static PNG poster, MP4 plays on hover or keyboard focus */
 .thumb {
   position: relative;
   display: block;
   aspect-ratio: 16 / 9;
-  border-radius: 14px;
+  border-radius: 10px;
   overflow: hidden;
   border: 1px solid var(--border);
   background: var(--accent-soft);
-  box-shadow: var(--shadow);
   margin-bottom: 1.25rem;
-  transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
-.thumb:hover,
-.thumb:focus-visible {
-  box-shadow: var(--shadow-lg);
-  transform: translateY(-2px);
-  text-decoration: none;
-}
-.thumb:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
 .thumb img,
 .thumb video {
   position: absolute;
@@ -162,6 +144,7 @@ section { padding: 1.25rem 0 3.5rem; }
   object-fit: cover;
   display: block;
 }
+.thumb img.from-left { object-position: left top; }
 .thumb video { opacity: 0; transition: opacity 0.25s ease; }
 .thumb.is-playing video { opacity: 1; }
 .thumb-badge {
@@ -171,43 +154,24 @@ section { padding: 1.25rem 0 3.5rem; }
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  padding: 0.3rem 0.65rem;
+  padding: 0.3rem 0.7rem;
   border-radius: 999px;
-  background: rgba(31, 41, 51, 0.82);
+  background: rgba(20, 35, 43, 0.85);
   color: #fff;
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
   pointer-events: none;
   transition: opacity 0.2s ease;
 }
 .thumb.is-playing .thumb-badge { opacity: 0; }
 
-/* Wide lead card: thumbnail beside the text */
-.wide-top {
-  display: grid;
-  grid-template-columns: 1.05fr 1fr;
-  gap: 1.75rem;
-  align-items: start;
-}
+/* Wide card: thumbnail beside the text */
+.wide-top { display: grid; grid-template-columns: 1.05fr 1fr; gap: 2rem; align-items: start; }
 .wide-top .thumb { margin-bottom: 0; }
-.wide-top .project-desc { margin-bottom: 1rem; }
 
 /* Project artifacts */
-.resource-group {
-  margin-top: 1.5rem;
-  padding-top: 1.25rem;
-  border-top: 1px solid var(--border);
-}
-.resource-label {
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 0.75rem;
-}
+.resource-group { margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid var(--border); }
+.resource-label { font-weight: 700; color: var(--muted); margin-bottom: 0.75rem; font-size: 0.95rem; }
 .resource-list { display: grid; gap: 0.6rem; }
 .resource {
   display: flex;
@@ -215,16 +179,11 @@ section { padding: 1.25rem 0 3.5rem; }
   gap: 0.75rem;
   padding: 0.7rem 0.85rem;
   border: 1px solid var(--border);
-  border-radius: 12px;
-  background: #fdfdfd;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  border-radius: 10px;
+  background: var(--surface);
+  transition: border-color 0.15s ease, background 0.15s ease;
 }
-.resource:hover {
-  border-color: var(--accent);
-  box-shadow: var(--shadow);
-  text-decoration: none;
-  transform: translateY(-1px);
-}
+.resource:hover { border-color: var(--accent); background: var(--accent-soft); text-decoration: none; }
 .resource-icon {
   flex: none;
   width: 34px;
@@ -237,36 +196,69 @@ section { padding: 1.25rem 0 3.5rem; }
 }
 .resource-text { display: grid; gap: 0.1rem; line-height: 1.3; }
 .resource-name { font-weight: 700; color: var(--text); }
-.resource-desc { font-size: 0.85rem; color: var(--muted); }
+.resource-desc { font-size: 0.88rem; color: var(--muted); }
 .resource-type {
   flex: none;
   margin-left: auto;
-  font-size: 0.68rem;
+  font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.05em;
   color: var(--muted);
-  background: var(--accent-soft);
   border: 1px solid var(--border);
-  padding: 0.2rem 0.5rem;
+  padding: 0.15rem 0.45rem;
   border-radius: 6px;
 }
 .project-card.wide .resource-list { grid-template-columns: 1fr 1fr; }
 
-/* About and contact */
-.contact-list { display: grid; gap: 0.5rem; margin-top: 1rem; }
-footer { padding: 2rem 0 3rem; color: var(--muted); font-size: 0.95rem; }
+/* Featured project: the one dark band on the page */
+.featured { background: var(--deep); color: #eef4f3; padding: 4.5rem 0; }
+.featured .section-title { color: var(--brass-light); font-size: 1.15rem; font-family: var(--body); font-weight: 700; letter-spacing: 0; margin-bottom: 1rem; }
+.featured .project-title { font-size: clamp(1.9rem, 3.6vw, 2.75rem); line-height: 1.1; margin-bottom: 0.5rem; max-width: 22ch; }
+.featured .project-meta { color: #b9d0cd; font-size: 1.05rem; margin-bottom: 2rem; }
+.featured-grid { display: grid; grid-template-columns: 1.25fr 1fr; gap: 2.5rem; align-items: start; }
+.featured .thumb { margin-bottom: 0; border-color: rgba(255, 255, 255, 0.25); box-shadow: 12px 12px 0 var(--brass); }
+.featured .project-desc { color: #dbe7e5; }
+.featured .button-row { margin-top: 1.5rem; }
+.featured .button.primary { background: var(--brass-light); border-color: var(--brass-light); color: var(--text); }
+.featured .button.primary:hover { background: #f0d08f; border-color: #f0d08f; }
+.featured .button.tertiary { color: #fff; }
+.featured .resource-group { margin-top: 3.5rem; border-top-color: rgba(255, 255, 255, 0.2); }
+.featured .resource-label { color: #b9d0cd; }
+.featured .resource-list { grid-template-columns: repeat(3, 1fr); }
+.featured .resource { background: rgba(255, 255, 255, 0.06); border-color: rgba(255, 255, 255, 0.2); }
+.featured .resource:hover { background: rgba(255, 255, 255, 0.13); border-color: var(--brass-light); }
+.featured .resource-icon { background: rgba(255, 255, 255, 0.12); color: var(--brass-light); }
+.featured .resource-name { color: #fff; }
+.featured .resource-desc, .featured .resource-type { color: #b9d0cd; }
+.featured .resource-type { border-color: rgba(255, 255, 255, 0.25); }
+.more-docs { margin-top: 1rem; }
+.more-docs summary { cursor: pointer; font-weight: 700; color: #fff; padding: 0.5rem 0; width: fit-content; }
+.more-docs summary:hover { color: var(--brass-light); }
+.more-docs .resource-list { margin-top: 0.6rem; }
 
+/* About and contact */
+.about-contact { background: var(--surface); border-top: 1px solid var(--border); }
+.about-contact .card { border: 0; padding: 0; max-width: 72ch; }
+.about-contact .section + .section { padding-top: 0; }
+.contact-list { display: grid; gap: 0.5rem; margin-top: 1rem; }
+footer { padding: 2rem 0 3rem; color: var(--muted); font-size: 0.95rem; background: var(--surface); }
+
+@media (max-width: 860px) {
+  .featured-grid, .wide-top { grid-template-columns: 1fr; gap: 1.5rem; }
+  .featured .resource-list { grid-template-columns: 1fr; }
+  .featured .thumb { box-shadow: 8px 8px 0 var(--brass); }
+}
 @media (max-width: 750px) {
-  .nav { align-items: flex-start; flex-direction: column; }
-  .hero { padding-top: 4rem; }
-  .hero-inner { grid-template-columns: 1fr; }
+  .nav { align-items: flex-start; flex-direction: column; gap: 0.5rem; }
+  .hero { padding-top: 3rem; }
+  .hero-inner { grid-template-columns: 1fr; gap: 2rem; }
+  .hero-headshot { order: -1; width: 150px; height: 178px; box-shadow: 7px 7px 0 var(--brass-light); }
   .two-column { grid-template-columns: 1fr; }
-  .wide-top { grid-template-columns: 1fr; gap: 1.25rem; }
   .project-card.wide .resource-list { grid-template-columns: 1fr; }
+  .section, .featured { padding: 3rem 0; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .thumb, .button, .resource { transition: none; }
+  .thumb video, .button, .resource { transition: none; }
 }
 </style>
 </head>
@@ -290,7 +282,7 @@ footer { padding: 2rem 0 3rem; color: var(--muted); font-size: 0.95rem; }
     <div class="site-name">David Bacon</div>
     <nav class="nav-links" aria-label="Main navigation">
       <a href="#project">Project</a>
-      <a href="about-flagship.html">Approach</a>
+      <a href="about-difficult-convos.html">Approach</a>
       <a href="#more-projects">More Projects</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
@@ -301,31 +293,175 @@ footer { padding: 2rem 0 3rem; color: var(--muted); font-size: 0.95rem; }
 <main>
 <section class="hero">
   <div class="container hero-inner">
-    <img src="Bacon-2~3.jpg" alt="Headshot of David Bacon" class="hero-headshot" />
     <div>
       <div class="eyebrow">Portfolio</div>
-      <h1>Instructional Designer and E-Learning Developer</h1>
-      <p class="subtitle">Instructional Design | Leadership Development | Learning Experience Designer | Scenario-Based Learning</p>
+      <h1>Instructional Designer and <span class="nowrap">E-Learning</span> Developer</h1>
       <p>
-        <span class="hero-lead">Nineteen years of diagnosing why people aren't performing, and building the training that fixes it.</span>
-        <span class="hero-support"> I've directed multi-year development programs serving 150+ participants annually across four concurrent learner cohorts, earning Excellent performance ratings in 11 consecutive review cycles &mdash; by treating learning design as a performance problem first and a content problem second. I'm now bringing that background into corporate Instructional Design, Talent Development, and Leadership Development roles where the results need to be measurable.</span>
+        <span class="hero-lead">I turn complex topics into training that people understand and actually use.</span>
+        <span class="hero-support"> Instructional Designer open to roles in the Baltimore, MD area (hybrid or flexible), with nearly 20 years of designing, facilitating, and assessing learning.</span>
       </p>
+      <h2 class="hero-heading">Career highlights</h2>
+      <ul class="highlights">
+        <li>Trained 30 staff on a new LMS; 100% met adoption benchmarks most schools missed</li>
+        <li>Built scenario-based training and microlearning in Articulate Storyline 360 and Rise 360, plus a custom AI-driven simulation</li>
+        <li>Run needs analysis and write ABCD objectives using ADDIE, Bloom&rsquo;s Taxonomy, and Gagn&eacute;&rsquo;s Nine Events</li>
+        <li>Led 125 learners per year across multi-cohort programs, improving program retention by 70%</li>
+        <li>Mentored 5 new teachers, leading to 100% &ldquo;Highly Effective&rdquo; ratings over 3 years</li>
+      </ul>
+      <p class="hero-skills"><strong>Core skills:</strong> Instructional Design, Needs Analysis, ADDIE, Scenario-Based Learning, Microlearning, Curriculum Development, Adult Learning Theory, Canvas LMS, Facilitation</p>
+      <p>If your team needs training that is clear, engaging, and tied to business goals, message me or email: <a href="mailto:bacon.davidj@gmail.com">bacon.davidj@gmail.com</a></p>
       <div class="button-row">
         <a class="button primary" href="#project">View Featured Project</a>
         <a class="button secondary" href="RESUME-11-10.pdf">View Resume</a>
-        <a class="button tertiary" href="mailto:bacon.davidj@gmail.com">Contact Me &rarr;</a>
+        <a class="button tertiary" href="mailto:bacon.davidj@gmail.com">Contact Me</a>
       </div>
+    </div>
+    <img src="Bacon-2~3.jpg" alt="Headshot of David Bacon" class="hero-headshot" />
+  </div>
+</section>
+
+<!-- Featured project (target of "View Featured Project" and the "Project" nav link) -->
+<section class="featured" id="project">
+  <div class="container">
+    <h2 class="section-title">Featured Project</h2>
+    <h3 class="project-title">Diagnose Before Solving: An AI Practice Call for Tech Support</h3>
+    <div class="project-meta">A Custom-Built AI Conversation Simulation with Web-Based Lead-in Training</div>
+    <div class="featured-grid">
+      <a class="thumb" href="https://dbacon6093.github.io/diagnose-before-solving/" aria-label="Launch the Diagnose Before Solving project">
+        <img class="from-left" src="dbs-thumb-pic.png" alt="Preview of the Diagnose Before Solving lead-in training" />
+        <video muted loop playsinline preload="none" tabindex="-1" aria-hidden="true">
+          <source src="dbs-video-thumb.mp4" type="video/mp4" />
+        </video>
+        <span class="thumb-badge"><svg width="12" height="12" aria-hidden="true"><use href="#icon-play"/></svg>Preview</span>
+      </a>
+      <div>
+        <p class="project-desc">
+          A short lead-in training followed by a live practice call. Learners play an internal tech support specialist taking a call from Marcus, a regional sales lead who is angry and certain a CRM update broke his team's numbers. They type their own responses, Marcus replies in real time, and the call ends with scored feedback that quotes what they actually said. To pass, learners have to acknowledge what the problem is costing him, ask what his reps experience, name the real cause, and route it to the person who can fix it.
+        </p>
+        <p class="project-desc">
+          I designed the learning experience, the five-criterion rubric, and the prompts, wrote a 92-test plan before the build, and directed an AI coding assistant through the application build. The character and the assessor are separate models, the code does the scoring arithmetic, and hard spending limits fall back to a recorded demo call, so a visitor always sees a working piece. The case study and decision log record the reasoning behind each choice, including the reversals.
+        </p>
+        <div class="button-row">
+          <a class="button primary" href="https://dbacon6093.github.io/diagnose-before-solving/">Launch Project</a>
+          <a class="button tertiary" href="projects/dbs/01-case-study.pdf">View Design Approach</a>
+        </div>
+      </div>
+    </div>
+    <div class="resource-group">
+      <div class="resource-label">Project artifacts</div>
+      <div class="resource-list">
+            <a class="resource" href="projects/dbs/01-case-study.pdf">
+              <span class="resource-icon" aria-hidden="true"><svg width="18" height="18"><use href="#icon-pdf"/></svg></span>
+              <span class="resource-text">
+                <span class="resource-name">Case Study</span>
+                <span class="resource-desc">The whole project in four pages: problem, design, testing, and what's not done</span>
+              </span>
+              <span class="resource-type">PDF</span>
+            </a>
+            <a class="resource" href="projects/dbs/02-key-decisions-index.pdf">
+              <span class="resource-icon" aria-hidden="true"><svg width="18" height="18"><use href="#icon-pdf"/></svg></span>
+              <span class="resource-text">
+                <span class="resource-name">Key Decisions</span>
+                <span class="resource-desc">An index of the decisions that shaped the project</span>
+              </span>
+              <span class="resource-type">PDF</span>
+            </a>
+            <a class="resource" href="projects/dbs/12-decision-log.pdf">
+              <span class="resource-icon" aria-hidden="true"><svg width="18" height="18"><use href="#icon-pdf"/></svg></span>
+              <span class="resource-text">
+                <span class="resource-name">Decision Log</span>
+                <span class="resource-desc">More than 200 dated entries: what was decided, what was rejected, and why</span>
+              </span>
+              <span class="resource-type">PDF</span>
+            </a>
+      </div>
+      <details class="more-docs">
+        <summary>Nine more design documents</summary>
+        <div class="resource-list">
+            <a class="resource" href="projects/dbs/03-scope-document.pdf">
+              <span class="resource-icon" aria-hidden="true"><svg width="18" height="18"><use href="#icon-pdf"/></svg></span>
+              <span class="resource-text">
+                <span class="resource-name">Scope Document</span>
+                <span class="resource-desc">What the rebuild covers and what it leaves out</span>
+              </span>
+              <span class="resource-type">PDF</span>
+            </a>
+            <a class="resource" href="projects/dbs/04-design-and-prompt-architecture.pdf">
+              <span class="resource-icon" aria-hidden="true"><svg width="18" height="18"><use href="#icon-pdf"/></svg></span>
+              <span class="resource-text">
+                <span class="resource-name">Design and Prompt Architecture</span>
+                <span class="resource-desc">How Marcus's knowledge is tiered so he never gives away the answer</span>
+              </span>
+              <span class="resource-type">PDF</span>
+            </a>
+            <a class="resource" href="projects/dbs/05-evaluation-design.pdf">
+              <span class="resource-icon" aria-hidden="true"><svg width="18" height="18"><use href="#icon-pdf"/></svg></span>
+              <span class="resource-text">
+                <span class="resource-name">Evaluation Design</span>
+                <span class="resource-desc">The rubric, the scoring model, and the rubric-ambiguity finding</span>
+              </span>
+              <span class="resource-type">PDF</span>
+            </a>
+            <a class="resource" href="projects/dbs/06-test-plan.pdf">
+              <span class="resource-icon" aria-hidden="true"><svg width="18" height="18"><use href="#icon-pdf"/></svg></span>
+              <span class="resource-text">
+                <span class="resource-name">Test Plan</span>
+                <span class="resource-desc">92 tests written before the build, with results</span>
+              </span>
+              <span class="resource-type">PDF</span>
+            </a>
+            <a class="resource" href="projects/dbs/07-technical-design.pdf">
+              <span class="resource-icon" aria-hidden="true"><svg width="18" height="18"><use href="#icon-pdf"/></svg></span>
+              <span class="resource-text">
+                <span class="resource-name">Technical Design</span>
+                <span class="resource-desc">Architecture, spending limits, and the demo-mode fallback</span>
+              </span>
+              <span class="resource-type">PDF</span>
+            </a>
+            <a class="resource" href="projects/dbs/08-interface-design.pdf">
+              <span class="resource-icon" aria-hidden="true"><svg width="18" height="18"><use href="#icon-pdf"/></svg></span>
+              <span class="resource-text">
+                <span class="resource-name">Interface Design</span>
+                <span class="resource-desc">What the learner sees, and what is deliberately left off screen</span>
+              </span>
+              <span class="resource-type">PDF</span>
+            </a>
+            <a class="resource" href="projects/dbs/09-embedding-and-lms-readiness-note.pdf">
+              <span class="resource-icon" aria-hidden="true"><svg width="18" height="18"><use href="#icon-pdf"/></svg></span>
+              <span class="resource-text">
+                <span class="resource-name">Embedding and LMS Readiness Note</span>
+                <span class="resource-desc">How the simulation embeds in a course and maps to SCORM and xAPI</span>
+              </span>
+              <span class="resource-type">PDF</span>
+            </a>
+            <a class="resource" href="projects/dbs/10-lead-in-training-outline.pdf">
+              <span class="resource-icon" aria-hidden="true"><svg width="18" height="18"><use href="#icon-pdf"/></svg></span>
+              <span class="resource-text">
+                <span class="resource-name">Lead-in Training Outline</span>
+                <span class="resource-desc">The six-slide lead-in and what it teaches</span>
+              </span>
+              <span class="resource-type">PDF</span>
+            </a>
+            <a class="resource" href="projects/dbs/11-lead-in-storyboard.pdf">
+              <span class="resource-icon" aria-hidden="true"><svg width="18" height="18"><use href="#icon-pdf"/></svg></span>
+              <span class="resource-text">
+                <span class="resource-name">Lead-in Storyboard</span>
+                <span class="resource-desc">The slide-by-slide plan for the web build</span>
+              </span>
+              <span class="resource-type">PDF</span>
+            </a>
+        </div>
+      </details>
     </div>
   </div>
 </section>
 
-<section id="projects">
+<section class="section" id="more-projects">
   <div class="container">
-    <h2 class="section-title">Projects</h2>
+    <h2 class="section-title">More Projects</h2>
     <div class="stack">
 
-      <!-- Lead project (target of "View Featured Project" and the "Project" nav link) -->
-      <div class="card project-card wide" id="project">
+      <div class="card project-card wide">
         <div class="wide-top">
           <a class="thumb" href="projects/90days/index.html" aria-label="Launch The First 90 Days project">
             <img src="first-90-days.png" alt="Preview of The First 90 Days microlearning series" loading="lazy" />
@@ -345,7 +481,7 @@ footer { padding: 2rem 0 3rem; color: var(--muted); font-size: 0.95rem; }
             </p>
             <div class="button-row">
               <a class="button primary" href="projects/90days/index.html">Launch Project</a>
-              <a class="button tertiary" href="first-90-days-design-document.pdf">View Design Approach &rarr;</a>
+              <a class="button tertiary" href="first-90-days-design-document.pdf">View Design Approach</a>
             </div>
           </div>
         </div>
@@ -388,7 +524,7 @@ footer { padding: 2rem 0 3rem; color: var(--muted); font-size: 0.95rem; }
         </div>
       </div>
 
-      <div class="two-column" id="more-projects">
+      <div class="two-column">
 
         <div class="card project-card">
           <a class="thumb" href="projects/difficult-conversations/story.html" aria-label="Launch the Difficult Conversations project">
@@ -405,7 +541,7 @@ footer { padding: 2rem 0 3rem; color: var(--muted); font-size: 0.95rem; }
           </p>
           <div class="button-row">
             <a class="button secondary" href="projects/difficult-conversations/story.html">Launch Project</a>
-            <a class="button tertiary" href="about-flagship.html">View Design Approach &rarr;</a>
+            <a class="button tertiary" href="about-difficult-convos.html">View Design Approach</a>
           </div>
           <div class="resource-group">
             <div class="resource-label">Project artifacts</div>
@@ -453,7 +589,8 @@ footer { padding: 2rem 0 3rem; color: var(--muted); font-size: 0.95rem; }
   </div>
 </section>
 
-<section id="about">
+<div class="about-contact">
+<section class="section" id="about">
   <div class="container">
     <h2 class="section-title">About Me</h2>
     <div class="card">
@@ -467,7 +604,7 @@ footer { padding: 2rem 0 3rem; color: var(--muted); font-size: 0.95rem; }
   </div>
 </section>
 
-<section id="contact">
+<section class="section" id="contact">
   <div class="container">
     <h2 class="section-title">Contact</h2>
     <div class="card">
@@ -479,6 +616,7 @@ footer { padding: 2rem 0 3rem; color: var(--muted); font-size: 0.95rem; }
     </div>
   </div>
 </section>
+</div>
 </main>
 
 <footer>
